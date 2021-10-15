@@ -12,10 +12,8 @@ function CustomInput(props) {
       <div className={styles.CustomTextarea}>
         <textarea
           name={props.name}
-          // onBlur={props.onBlur}
           onChange={props.onChange}
           value={props.value}
-        // required
         />
         <div>{props.value.length}/600</div>
       </div>
@@ -26,9 +24,7 @@ function CustomInput(props) {
         value={props.value}
         name={props.name}
         onChange={props.onChange}
-        // onBlur={props.onBlur}
         type={props.type}
-        // required
         className={styles.input}
       ></input>
     );
