@@ -1,12 +1,21 @@
-import React from "react";
+import { useState } from 'react';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+import UserInfoFrom from "./components/UserInfoForm/UserInfoForm";
+import ShowUserInfo from "./components/ShowUserInfo/ShowUserInfo";
+
+function App() {
+  const [showForm, setShowForm] = useState(true);
+  const [userInfo, setUserInfo] = useState();
+
+  function showResult(userInfo) {
+    setUserInfo(userInfo);
+    setShowForm(false);
   }
 
-  render() {
-    return <div>hi</div>;
+  if (showForm) {
+    return <UserInfoFrom onSubmit={showResult} />;
+  } else {
+    return <ShowUserInfo userInfo={userInfo} />
   }
 }
 

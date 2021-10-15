@@ -1,0 +1,43 @@
+.messageWrapper {
+  position: relative;
+}
+
+.message {
+  display: none;
+  position: absolute;
+  top: -20px;
+  left: 100px;
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: white;
+  width: auto;
+  max-width: 200px;
+}
+
+.message::before {
+  content: "";
+  position: absolute;
+  left: 36px;
+  bottom: -5px;
+  background-color: white;
+  border-bottom: 1px solid black;
+  width: 10px;
+  height: 5px;
+  transform: rotate(45deg);
+}
+
+.message::after {
+  content: "";
+  position: absolute;
+  left: 40px;
+  bottom: -5px;
+  background-color: white;
+  border-bottom: 1px solid black;
+  width: 10px;
+  height: 5px;
+  transform: rotate(-45deg);
+}
+.message.show {
+  display: initial;
+}
