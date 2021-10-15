@@ -4,51 +4,45 @@ import ErrorMessage from "./ErrorMessage";
 
 import styles from "./CustomInput.module.css";
 
-class CustomInput extends React.Component {
-  constructor(props) {
-    super(props);
-    this.props = props;
-  }
+function CustomInput(props) {
 
-  render() {
-    let input;
-    if (this.props.type === "textArea") {
-      input = (
-        <div className={styles.CustomTextarea}>
-          <textarea
-            name={this.props.name}
-            onBlur={this.props.onBlur}
-            onChange={this.props.onChange}
-            value={this.props.value}
-            required
-          />
-          <div>{this.props.value.length}/600</div>
-        </div>
-      );
-    } else {
-      input = (
-        <input
-          value={this.props.value}
-          name={this.props.name}
-          onChange={this.props.onChange}
-          onBlur={this.props.onBlur}
-          type={this.props.type}
-          required
-          className={styles.input}
-        ></input>
-      );
-    }
-
-    return (
-      <div className={styles.customInput}>
-        <label className={styles.label} htmlFor={this.props.name}>
-          {this.props.label}
-        </label>
-        {input}
-        <ErrorMessage errorMessage={this.props.errorMessage} />
+  let input;
+  if (props.type === "textArea") {
+    input = (
+      <div className={styles.CustomTextarea}>
+        <textarea
+          name={props.name}
+          // onBlur={props.onBlur}
+          onChange={props.onChange}
+          value={props.value}
+        // required
+        />
+        <div>{props.value.length}/600</div>
       </div>
     );
+  } else {
+    input = (
+      <input
+        value={props.value}
+        name={props.name}
+        onChange={props.onChange}
+        // onBlur={props.onBlur}
+        type={props.type}
+        // required
+        className={styles.input}
+      ></input>
+    );
   }
+
+  return (
+    <div className={styles.customInput}>
+      <ErrorMessage errorMessage={props.errorMessage} valid={props.valid} />
+      <label className={styles.label} htmlFor={props.name}>
+        {props.label}
+      </label>
+      {input}
+    </div>
+  );
 }
 
 export default CustomInput;

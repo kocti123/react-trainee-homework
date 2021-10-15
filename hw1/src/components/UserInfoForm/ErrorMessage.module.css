@@ -5,7 +5,8 @@
 .message {
   display: none;
   position: absolute;
-  top: 10px;
+  top: -20px;
+  left: 100px;
   border: 1px solid black;
   padding: 5px;
   border-radius: 5px;
@@ -18,24 +19,24 @@
   content: "";
   position: absolute;
   left: 36px;
-  top: -5px;
+  bottom: -5px;
   background-color: white;
-  border-top: 1px solid black;
+  border-bottom: 1px solid black;
   width: 10px;
   height: 5px;
-  transform: rotate(-45deg);
+  transform: rotate(45deg);
 }
 
 .message::after {
   content: "";
   position: absolute;
   left: 40px;
-  top: -5px;
+  bottom: -5px;
   background-color: white;
-  border-top: 1px solid black;
+  border-bottom: 1px solid black;
   width: 10px;
   height: 5px;
-  transform: rotate(45deg);
+  transform: rotate(-45deg);
 }
 .message.show {
   display: initial;

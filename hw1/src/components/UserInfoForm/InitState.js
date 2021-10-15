@@ -2,6 +2,7 @@ function InitInput(name, label, type) {
   this.name = name;
   this.label = label;
   this.errorMessage = '';
+  this.valid = false;
   this.value = '';
   this.type = type;
 }
