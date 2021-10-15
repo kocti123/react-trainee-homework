@@ -1,0 +1,30 @@
+.customInput {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+
+.label {
+  font-size: 1.2rem;
+  /* color: red; */
+}
+
+.label::after {
+  content: "*";
+  color: red;
+}
+
+/* .customInput > label {
+  margin-bottom: 20px;
+} */
+
+.input {
+  margin-top: 10px;
+  max-width: 200px;
+}
+
+.CustomTextarea > textarea {
+  width: 100%;
+  min-height: 5rem;
+  resize: vertical;
+}

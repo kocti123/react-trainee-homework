@@ -1,0 +1,36 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  /* margin-top: 40px; */
+  margin: 40px auto 40px auto;
+  background-color: lightskyblue;
+  padding: 40px;
+  border-radius: 20px;
+}
+
+.title {
+  text-align: center;
+  margin-top: 0px;
+}
+
+@media (max-width: 680px) {
+  .form {
+    border-radius: 0px;
+    margin: 0px;
+    padding-top: 80px;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.buttons > button {
+  padding: 10px;
+  width: 100%;
+  /* margin: 0px 5px 0px 5px; */
+  margin-bottom: 20px;
+}
