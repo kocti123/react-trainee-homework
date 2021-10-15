@@ -1,0 +1,25 @@
+.userInfo {
+  padding: 20px;
+}
+
+.title {
+  text-align: center;
+}
+
+.userInfo > h4 {
+  margin-bottom: 10px;
+}
+
+.userInfo > p {
+  margin-top: 10px;
+  line-height: 1.3rem;
+}
+
+.userInfo > ul > li {
+  line-height: 1.4rem;
+}
+
+.userInfo > h3 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
