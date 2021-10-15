@@ -1,0 +1,8 @@
+.productInfo {
+}
+
+.productInfo img {
+  display: block;
+  max-width: 200px;
+  object-fit: contain;
+}

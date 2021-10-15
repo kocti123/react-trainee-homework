@@ -1,0 +1,33 @@
+.navigation {
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  z-index: 100;
+  top: 0;
+  padding: 10px;
+  color: black;
+  background-color: #b9b9b985;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #b9b9b9;
+}
+
+.navigation ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  display: inline;
+}
+
+.navigation li {
+  display: inline;
+}
+
+.navigation li a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.navigation li a:hover {
+  color: #535353;
+}
