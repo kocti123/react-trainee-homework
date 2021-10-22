@@ -1,0 +1,47 @@
+.productCard {
+  width: 160px;
+  min-height: 170px;
+  border: 1px grey solid;
+  margin: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.productCard img {
+  display: block;
+  margin: auto;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  overflow: hidden;
+}
+
+.productCard a {
+  padding: 10px;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.productCard p {
+  margin-top: 5px;
+  margin-bottom: 0px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.productCard button {
+  opacity: 0;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  width: 100px;
+  margin-left: 5px;
+  margin-right: 5px;
+  transition: opacity 0.2s;
+}
+
+.productCard:hover button {
+  opacity: 1;
+}
