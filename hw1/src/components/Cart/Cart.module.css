@@ -1,0 +1,10 @@
+.cart {
+  margin: 0px;
+  padding-right: 10px;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.cart:hover {
+  background-color: #a8a8a842;
+}

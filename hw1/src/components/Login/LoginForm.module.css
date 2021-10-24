@@ -1,0 +1,14 @@
+.loginForm {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.loginForm label {
+  margin-bottom: 10px;
+}
+
+.loginForm div button {
+  margin-right: 20px;
+}
