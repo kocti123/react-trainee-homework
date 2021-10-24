@@ -1,39 +1,41 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart } from "../../redux/actions/cartActions";
+import {
+  userLogin,
+  userLogout,
+  showLoginForm,
+} from "../../redux/actions/userActions";
 
 import styles from "./Login.module.css";
 import LoginFormModal from "./LoginForm";
 
-function Login({ onLogin, onLogout, logInfo }) {
-  const [showLoginForm, setShowLoginForm] = useState(false);
+function Login() {
+  const dispatch = useDispatch();
+  const { isLogin, username, isLoginFormShown } = useSelector(
+    (store) => store.user
+  );
 
   function startLogin() {
-    setShowLoginForm(true);
+    dispatch(showLoginForm());
   }
 
-  function loginHandler(name, role) {
-    onLogin(name, role);
-    setShowLoginForm(false);
-  }
-
-  function cancelHandler() {
-    setShowLoginForm(false);
+  function onLogout() {
+    dispatch(userLogout());
+    dispatch(clearCart());
   }
 
   return (
     <div>
-      {logInfo.login ? (
+      {isLogin ? (
         <div className={styles.loginStatus}>
-          <p>{logInfo.name}</p>
+          <p>{username}</p>
           <button onClick={onLogout}>log out</button>
         </div>
       ) : (
         <button onClick={startLogin}>log in</button>
       )}
-      <LoginFormModal
-        showLoginForm={showLoginForm}
-        onLogin={loginHandler}
-        onCancel={cancelHandler}
-      />
+      <LoginFormModal />
     </div>
   );
 }

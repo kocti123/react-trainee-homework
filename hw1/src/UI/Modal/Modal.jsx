@@ -43,7 +43,7 @@ function Modal({ children, onClose, show, title }) {
           <h1>{title ?? "Title"}</h1>
           <button onClick={onClose}></button>
         </div>
-        <div>{children}</div>
+        <div className={styles.modalContent}>{children}</div>
       </div>
     </div>,
     modalRoot

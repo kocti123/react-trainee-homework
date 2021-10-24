@@ -1,0 +1,29 @@
+.cart {
+  display: grid;
+  grid-template-areas:
+    "img title title"
+    "img amount price";
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #333;
+}
+
+.cartImage {
+  grid-area: img;
+  height: 50px;
+  widows: 50px;
+  padding: 20px;
+  margin: auto;
+}
+
+.cartTitle {
+  grid-area: title;
+}
+
+.cartPrice {
+  grid-area: price;
+}
+
+.cartAmount {
+  grid-area: amount;
+}

@@ -1,11 +1,17 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-function BuyForm({ product, onBuy, max }) {
+import { addItemToCart } from "../../redux/actions/cartActions";
+
+function BuyForm() {
   const [buyAmount, setBuyAmount] = useState(1);
+  const dispatch = useDispatch();
+  const { product } = useSelector((store) => store.product);
+  const { isEdit } = useSelector((store) => store.productEditForm);
 
   function submitHandler(event) {
     event.preventDefault();
-    onBuy(buyAmount);
+    dispatch(addItemToCart(product, buyAmount));
   }
 
   function changeAmountHandler({ target: { value } }) {
@@ -13,18 +19,25 @@ function BuyForm({ product, onBuy, max }) {
   }
 
   return (
-    <form onSubmit={submitHandler}>
-      <input
-        type="number"
-        min="1"
-        max={max}
-        value={buyAmount}
-        onChange={changeAmountHandler}
-      />
-      <button type="submin" disabled={max === 0}>
-        {max === 0 ? "out of stock" : "buy"}
-      </button>
-    </form>
+    <>
+      {!isEdit ? (
+        <form onSubmit={submitHandler}>
+          {/* {product.instock !== 0 ? ( */}
+          {/* <> */}
+          <input
+            type="number"
+            min="1"
+            // max={product.instock}
+            value={buyAmount}
+            onChange={changeAmountHandler}
+          />
+          <button type="submin">buy</button>
+          {/* </> */}
+          {/* ) : ( // <p>out of stock</p> */}
+          {/* )} */}
+        </form>
+      ) : undefined}
+    </>
   );
 }
 

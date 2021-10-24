@@ -1,18 +1,32 @@
-function EditButton({ role, isEdit, onStartEdit, onSaveEdit, onCancelEdit }) {
+import { useSelector, useDispatch } from "react-redux";
+
+import {
+  startEdit,
+  stopEdit,
+} from "../../redux/actions/productEditFormActions";
+
+function EditButton() {
+  const dispatch = useDispatch();
+  const { isEdit } = useSelector((store) => store.productEditForm);
+
+  function startEditHandler() {
+    dispatch(startEdit());
+  }
+
+  function cancelEditHandler() {
+    dispatch(stopEdit());
+  }
+
   return (
     <>
-      {role === "admin" ? (
+      {isEdit ? (
         <>
-          {isEdit ? (
-            <>
-              <button onClick={onSaveEdit}>Save</button>
-              <button onClick={onCancelEdit}>Cancel</button>
-            </>
-          ) : (
-            <button onClick={onStartEdit}>Edit</button>
-          )}
+          <button type="submit">Save</button>
+          <button onClick={cancelEditHandler}>Cancel</button>
         </>
-      ) : undefined}
+      ) : (
+        <button onClick={startEditHandler}>Edit</button>
+      )}
     </>
   );
 }

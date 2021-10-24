@@ -1,48 +1,49 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-import { fetchProductById } from "../../api/product";
+import {
+  fetchAndSetProduct,
+  clearProduct,
+} from "../../redux/actions/productActions";
 
 import BuyForm from "./BuyForm";
-import ProductDescriptionEditable from "./ProductDescriptionEditable";
+import EditProduct from "./EditProduct";
+import Spinner from "../../UI/Spinner/Spinner";
 
 import styles from "./ProductInfo.module.css";
 
-function ProductInfo({ logInfo, onBuyProduct, lastUpdated, onUpdateInfo }) {
+function ProductInfo() {
+  const dispatch = useDispatch();
   const { id } = useParams();
-  const [product, setProduct] = useState();
+  const { isLogin } = useSelector((store) => store.user);
+  const { product } = useSelector((store) => store.product);
+  const { isEdit } = useSelector((store) => store.productEditForm);
 
   useEffect(() => {
-    fetchProductById(id).then(setProduct);
-  }, [id]);
-
-  function submitHandler(amount) {
-    onBuyProduct(product, amount);
-    setProduct((prevState) => ({
-      ...prevState,
-      instock: prevState.instock - amount,
-    }));
-  }
+    dispatch(fetchAndSetProduct(id));
+    return () => {
+      dispatch(clearProduct());
+    };
+  }, [id, dispatch]);
 
   return (
     <div className={styles.productInfo}>
-      {product ? (
+      {product?.id ? (
         <>
-          <ProductDescriptionEditable
-            product={product}
-            onUpdateInfo={onUpdateInfo}
-            role={logInfo.role}
-            isLogin={logInfo.login}
-            setProduct={setProduct}
-          />
-          {logInfo.login ? (
-            <BuyForm max={product.instock} onBuy={submitHandler} />
-          ) : (
-            <p>please log in</p>
+          <img src={product.image} alt={product.title} />
+          {isEdit ? undefined : (
+            <>
+              <h1>{product.title}</h1>
+              <p>{product.description}</p>
+              <p>{product.price}$</p>
+              {isLogin ? <BuyForm /> : <p>please log in</p>}
+            </>
           )}
+          {isLogin ? <EditProduct /> : undefined}
         </>
       ) : (
-        <p>Loading</p>
+        <Spinner />
       )}
     </div>
   );

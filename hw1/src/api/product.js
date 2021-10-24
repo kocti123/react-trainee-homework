@@ -1,6 +1,6 @@
 import { GET_ALL_PRODUCTS } from "../constants/productsURL";
 
-export const fetchAllProduct = async () => {
+export const fetchAllProducts = async () => {
   const respones = await fetch(GET_ALL_PRODUCTS);
 
   return respones.json();
@@ -22,12 +22,13 @@ export const sentNewInstockInfo = (product, amount) => {
   });
 }
 
-export const sentInfoAboutProduct = (newInfo) => {
-  fetch(`${GET_ALL_PRODUCTS}/${newInfo.id}`, {
+export const sentInfoAboutProduct = async (newInfo) => {
+  const data = await fetch(`${GET_ALL_PRODUCTS}/${newInfo.id}`, {
     method: "put",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(newInfo),
   });
+  return data.json();
 }
