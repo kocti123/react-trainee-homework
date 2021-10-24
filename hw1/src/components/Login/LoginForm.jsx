@@ -31,9 +31,9 @@ function LoginFormModal() {
 
   async function submitHandler(event) {
     if (event) event.preventDefault();
+    console.log("loggining");
     setShowLoading(true);
     const isLogin = await dispatch(userLogin(username, password));
-    console.log(isLogin);
     setShowLoading(false);
     if (isLogin) {
       dispatch(setCardUsingUserId());
@@ -72,7 +72,9 @@ function LoginFormModal() {
           </label>
           <div>
             <button type="submit">Submit</button>
-            <button onClick={cancelHandler}>Cancel</button>
+            <button type="button" onClick={cancelHandler}>
+              Cancel
+            </button>
           </div>
           <p>{error ? error : ""}</p>
         </form>
