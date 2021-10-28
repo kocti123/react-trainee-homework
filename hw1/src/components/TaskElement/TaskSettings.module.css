@@ -1,0 +1,17 @@
+.menuButton {
+  display: block;
+  height: 100%;
+  width: 1.5rem;
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+}
+
+.menuButton:hover {
+  background-color: rgb(128, 128, 128);
+}
+
+.taskSettings {
+  height: 100%;
+  cursor: pointer;
+}
