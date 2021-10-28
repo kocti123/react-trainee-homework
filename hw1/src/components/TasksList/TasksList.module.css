@@ -1,0 +1,32 @@
+.tasksMenu {
+  margin-top: 20px;
+  width: 400px;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid black;
+}
+
+.tasksList li:last-child {
+  margin-bottom: 0px;
+  border: none;
+}
+
+.tasksList {
+  padding: 0;
+  margin: 0;
+}
+
+.noTasks {
+  text-align: center;
+}
+
+.loading {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loading p {
+  margin-top: 5px;
+}

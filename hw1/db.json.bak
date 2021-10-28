@@ -1,0 +1,28 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "body": "ho ho ho ho",
+      "completed": false,
+      "favourite": false
+    },
+    {
+      "id": 2,
+      "body": "do this",
+      "completed": false,
+      "favourite": true
+    },
+    {
+      "id": 3,
+      "body": "don do this",
+      "completed": true,
+      "favourite": false
+    },
+    {
+      "id": 4,
+      "body": "hai",
+      "completed": true,
+      "favourite": true
+    }
+  ]
+}
