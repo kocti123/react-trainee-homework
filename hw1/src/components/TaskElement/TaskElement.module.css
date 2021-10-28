@@ -1,0 +1,38 @@
+.taskElement {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+  overflow: hidden;
+  height: 100px;
+}
+
+.taskElement p {
+  width: 80%;
+  display: block;
+  overflow-wrap: break-word;
+}
+
+.completed {
+  background-color: rgb(212, 212, 212);
+}
+
+.favouriteStatus {
+  display: block;
+  height: 100%;
+  width: 1.5rem;
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+}
+
+.favouriteStatus:hover {
+  background-color: rgb(128, 128, 128);
+}
+
+.input {
+  width: 300px;
+  display: block;
+  overflow-wrap: break-word;
+  resize: none;
+}

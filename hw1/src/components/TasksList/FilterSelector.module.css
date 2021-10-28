@@ -1,0 +1,24 @@
+.filterSelector {
+  display: flex;
+  border-bottom: 1px solid black;
+}
+
+.filterSelector button {
+  border: none;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.filterSelector button:hover {
+  background-color: grey;
+}
+
+.filterSelector button.selected {
+  background-color: black;
+  color: white;
+}
