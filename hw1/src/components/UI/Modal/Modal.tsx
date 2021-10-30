@@ -3,19 +3,18 @@ import { useEffect, useRef } from "react";
 
 import styles from "./Modal.module.css";
 
-const modalRoot = document.querySelector<Element>("#modal")!;
-
 function Modal({
   children,
   onClose,
   show,
-  title,
+  title = "Title",
 }: {
   children: React.ReactNode;
   onClose: () => void;
   show: boolean;
-  title: string;
+  title?: string;
 }) {
+  const modalRoot = document.querySelector<Element>("#modal")!;
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -52,7 +51,7 @@ function Modal({
     >
       <div className={styles.modal}>
         <div className={styles.modalTitle}>
-          <h1>{title ?? "Title"}</h1>
+          <h1>{title}</h1>
           <button onClick={onClose}></button>
         </div>
         <div className={styles.modalContent}>{children}</div>

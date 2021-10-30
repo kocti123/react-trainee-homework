@@ -7,7 +7,7 @@ import {
   setNewBody,
   updateBodyOfTask,
 } from "../../redux/actions/tasksActions";
-import TaskSettings from "./TaskSettings";
+import TaskSettings from "../TaskSettings/TaskSettings";
 import styles from "./TaskElement.module.css";
 
 import { ReactComponent as Star } from "../../icons/star.svg";
@@ -15,16 +15,14 @@ import { ReactComponent as Dot } from "../../icons/dot.svg";
 import { ITask } from "../../types";
 
 function TaskElement({
-  id,
   task,
   onDelete,
 }: {
-  id: number;
   task: ITask;
   onDelete: (task: ITask) => void;
 }) {
   const dispatch = useAppDispatch();
-  const { body, completed, favourite, isEdit, newBody } = task;
+  const { body, completed, favourite, isEdit, newBody, id } = task;
   const bodyTaskRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -78,7 +76,7 @@ function TaskElement({
       ) : (
         <p>{body}</p>
       )}
-      <TaskSettings id={id} onDelete={onDelete} task={task} />
+      <TaskSettings onDelete={onDelete} task={task} />
     </li>
   );
 }

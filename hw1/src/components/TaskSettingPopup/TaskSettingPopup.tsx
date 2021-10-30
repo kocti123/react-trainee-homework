@@ -11,23 +11,20 @@ import {
 import { ITask } from "../../types";
 import styles from "./TaskSettingPopup.module.css";
 
-const popupDOM = document.querySelector<HTMLDListElement>("#popup")!;
-
 function TaskSettingPopup({
   onClose,
   onDelete,
   task,
-  id,
   position,
 }: {
   onClose: () => void;
   onDelete: (task: ITask) => void;
   task: ITask;
-  id: number;
   position: { x: number; y: number };
 }) {
   const dispatch = useAppDispatch();
-  const { completed, favourite, isEdit } = task;
+  const { completed, favourite, isEdit, id } = task;
+  const popupDOM = document.querySelector<HTMLDListElement>("#popup")!;
   const popupRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
@@ -74,22 +71,24 @@ function TaskSettingPopup({
       <div className={styles.popupWrapper} onClick={onClose}></div>
       <ul ref={popupRef} className={styles.popup}>
         <li>
-          <button onClick={toggleFavourite}>
+          <button onClick={toggleFavourite} className="toggleFavourite">
             {favourite ? "Убрать из избранного" : "В избранное"}
           </button>
         </li>
         <li>
-          <button onClick={toggleCompleted}>
+          <button onClick={toggleCompleted} className="toggleCompletion">
             {completed ? "Вернуть в работу" : "Выполненно"}
           </button>
         </li>
         <li>
-          <button onClick={toggleIsEdit}>
+          <button onClick={toggleIsEdit} className="toggleIsEdit">
             {isEdit ? "Отменить редактирование" : "Редактировать"}
           </button>
         </li>
         <li>
-          <button onClick={removeTaskHandler}>Удалить</button>
+          <button onClick={removeTaskHandler} className="remove">
+            Удалить
+          </button>
         </li>
       </ul>
     </>,

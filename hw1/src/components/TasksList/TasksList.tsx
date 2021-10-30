@@ -4,12 +4,12 @@ import {
   fetchAndSetAllTasks,
   removeTask,
 } from "../../redux/actions/tasksActions";
-import FilterSelector from "./FilterSelector";
+import FilterSelector from "../FilterSelector/FilterSelector";
 import TaskElement from "../TaskElement/TaskElement";
 import styles from "./TasksList.module.css";
-import Modal from "../UI/Modal";
+import Modal from "../UI/Modal/Modal";
 import { ITask } from "../../types";
-import Spinner from "../UI/Spinner";
+import Spinner from "../UI/Spinner/Spinner";
 
 function TasksList() {
   const dispatch = useAppDispatch();
@@ -22,6 +22,7 @@ function TasksList() {
   }, [dispatch]);
 
   function deleteHandler(task: ITask): void {
+    console.log("dleteHandler")
     setToDelete({ ...task });
     setShowToDelete(true);
   }
@@ -41,24 +42,21 @@ function TasksList() {
     <div className={styles.tasksMenu}>
       <FilterSelector />
       {isLoaded ? (
-        <>
-          {filtredTasks.length !== 0 ? (
-            <ul className={styles.tasksList}>
-              {filtredTasks.map((task) => {
-                return (
-                  <TaskElement
-                    id={task.id}
-                    key={task.id}
-                    onDelete={deleteHandler}
-                    task={task}
-                  />
-                );
-              })}
-            </ul>
-          ) : (
-            <p className={styles.noTasks}>Нет задач</p>
-          )}
-        </>
+        filtredTasks.length !== 0 ? (
+          <ul className={styles.tasksList}>
+            {filtredTasks.map((task) => {
+              return (
+                <TaskElement
+                  key={task.id}
+                  onDelete={deleteHandler}
+                  task={task}
+                />
+              );
+            })}
+          </ul>
+        ) : (
+          <p className={styles.noTasks}>Нет задач</p>
+        )
       ) : (
         <div className={styles.loading}>
           <Spinner />
@@ -71,8 +69,8 @@ function TasksList() {
         <p>{toDelete && toDelete.body}</p>
         <p>Дата создания:</p>
         <p>{toDelete && toDelete.creationDate.toLocaleString()}</p>
-        <button onClick={cancelDelete}>Отмена</button>
-        <button onClick={deleteTask}>Удалить</button>
+        <button onClick={cancelDelete} className="cancel">Отмена</button>
+        <button onClick={deleteTask} className="delete">Удалить</button>
       </Modal>
     </div>
   );

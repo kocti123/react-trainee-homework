@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from "../../redux";
 import { changeFilter } from "../../redux/actions/tasksActions";
+import { filters } from "../../types";
 
 import styles from "./FilterSelector.module.css";
 
@@ -7,33 +8,19 @@ function FilterSelector() {
   const dispatch = useAppDispatch();
   const { currentFilter } = useAppSelector((store) => store.tasks);
 
-  const filterFavourite = () => {
-    if ("favourite" === currentFilter) {
+  const filterChangeHandler = (filter: filters) => {
+    if (filter === currentFilter) {
       dispatch(changeFilter("all"));
       return;
     }
-    dispatch(changeFilter("favourite"));
-  };
-  const filterCompleted = () => {
-    if ("completed" === currentFilter) {
-      dispatch(changeFilter("all"));
-      return;
-    }
-    dispatch(changeFilter("completed"));
-  };
-  const filterNotCompleted = () => {
-    if ("notCompleted" === currentFilter) {
-      dispatch(changeFilter("all"));
-      return;
-    }
-    dispatch(changeFilter("notCompleted"));
+    dispatch(changeFilter(filter));
   };
 
   return (
     <div className={styles.filterSelector}>
       <button
         className={currentFilter === "completed" ? styles.selected : undefined}
-        onClick={filterCompleted}
+        onClick={() => filterChangeHandler("completed")}
       >
         Выполненные задачи
       </button>
@@ -41,13 +28,13 @@ function FilterSelector() {
         className={
           currentFilter === "notCompleted" ? styles.selected : undefined
         }
-        onClick={filterNotCompleted}
+        onClick={() => filterChangeHandler("notCompleted")}
       >
         Задачи в работе
       </button>
       <button
         className={currentFilter === "favourite" ? styles.selected : undefined}
-        onClick={filterFavourite}
+        onClick={() => filterChangeHandler("favourite")}
       >
         Избранные задачи
       </button>

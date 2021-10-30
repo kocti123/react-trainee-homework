@@ -25,7 +25,7 @@ function NewTaskForm() {
       <h4>Создание новой задачи</h4>
       <form onSubmit={submitHandler} className={styles.form}>
         <input value={value} onChange={changeValueHandler}></input>
-        <button onSubmit={submitHandler}>
+        <button>
           <CreateIcon />
         </button>
       </form>

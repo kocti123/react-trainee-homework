@@ -1,15 +1,13 @@
 import { useState } from "react";
 import { ReactComponent as MenuIcon } from "../../icons/menu.svg";
 import { ITask } from "../../types";
-import TaskSettingPopup from "./TaskSettingPopup";
+import TaskSettingPopup from "../TaskSettingPopup/TaskSettingPopup";
 import styles from "./TaskSettings.module.css";
 
-function TaskSettingsPopup({
-  id,
+function TaskSettings({
   task,
   onDelete,
 }: {
-  id: number;
   task: ITask;
   onDelete: (task: ITask) => void;
 }) {
@@ -34,7 +32,6 @@ function TaskSettingsPopup({
         <TaskSettingPopup
           onDelete={onDelete}
           onClose={close}
-          id={id}
           task={task}
           position={positionOfElement}
         />
@@ -43,4 +40,4 @@ function TaskSettingsPopup({
   );
 }
 
-export default TaskSettingsPopup;
+export default TaskSettings;
