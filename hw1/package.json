@@ -6,16 +6,36 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "@types/enzyme": "^3.10.10",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.6",
+    "@types/react": "^17.0.33",
+    "@types/react-dom": "^17.0.10",
+    "@types/react-redux": "^7.1.20",
+    "@types/redux": "^3.6.0",
+    "@types/redux-mock-store": "^1.0.3",
+    "@types/redux-thunk": "^2.1.0",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.5",
+    "enzyme": "^3.11.0",
+    "enzyme-to-json": "^3.6.2",
+    "json-server": "^0.17.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
     "react-scripts": "4.0.3",
+    "redux": "^4.1.1",
+    "redux-mock-store": "^1.5.4",
+    "redux-thunk": "^2.4.0",
+    "typescript": "^4.4.4",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "BROWSER=none react-scripts start",
+    "startApiMock": "json-server --watch db.json --port 3004",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --coverage",
+    "eject": "react-scripts eject",
+    "genAndShowCov": "npm test -- --watchAll=false --coverage; cd coverage/lcov-report/; python3 -mwebbrowser http://localhost:8000; python3 -m http.server --bind localhost"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +54,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.9"
   }
 }
