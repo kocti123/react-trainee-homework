@@ -22,7 +22,6 @@ function TasksList() {
   }, [dispatch]);
 
   function deleteHandler(task: ITask): void {
-    console.log("dleteHandler")
     setToDelete({ ...task });
     setShowToDelete(true);
   }
